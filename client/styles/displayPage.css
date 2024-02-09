@@ -1,0 +1,158 @@
+.displayPage {
+    position: absolute;
+    overflow: hidden;
+    background-color: var(--display);
+    width: 100%;
+    height: 100%;
+}
+
+.displayPage > div {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* Room messaging display (Block) */
+
+.messagesArea {
+    user-select: text;
+    height: calc(100% - 10rem);
+}
+
+.messagesArea > div {
+    display: none; /* Block */
+    margin: 0 4rem;
+}
+
+.messagesArea > div:first-child {
+    justify-content: end;
+    border-bottom: 0.5rem solid var(--displayDivMain);
+}
+
+.leaveButton {
+    background-image: url("../images/cross.png");
+    background-size: 5rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.leaveButton:hover {
+    background-image: url("../images/crossHover.png");
+}
+
+.messagesArea > div > div {
+    word-break: break-word;
+    border-bottom: 0.5rem solid var(--displayDivMain);
+    font-size: 2rem;
+    padding: 2rem;
+    transition: background-color 0.5s linear;
+}
+
+.messagesArea > div > div > div {
+    font-weight: 700;
+}
+
+.messageBar {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+}
+
+.messageBar > input {
+    flex: 1;
+    height: 6rem;
+    margin: 2rem 1rem 2rem 4rem;
+    padding: 0 2rem;
+}
+
+.messageBar > button {
+    height: 6rem;
+    margin: 2rem 4rem 2rem 1rem;
+    padding: 0 2rem;
+}
+
+/* Public rooms display (Block) */
+
+.publicDisplay button {
+    display: block;
+    margin: 0 auto 2.5rem auto;
+    padding: 1rem 2rem;
+}
+
+.publicDisplay > div {
+    display: flex;
+    background-color: var(--displayDivMain);
+    border-radius: 1rem;
+    width: calc(100% - 10rem);
+    min-height: 10rem;
+    margin: 0 auto 2.5rem auto;
+}
+
+.publicDisplay > div:first-child {
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+}
+
+.publicDisplay > div > div {
+    margin: 1rem 2rem;
+}
+
+.publicDisplay > div > button {
+    margin: 2rem 2rem 2rem auto;
+    padding: 0 2rem;
+}
+
+.publicDisplay > div > div > div {
+    word-break: break-word;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.publicDisplay > div > div > p {
+    color: var(--displayTextSecond);
+    font-size: 2rem;
+}
+
+/* Settings display (Block) */
+
+.settingsDisplay > div {
+    display: flex;
+    border-top: 0.5rem solid var(--displayDivMain);
+    font-size: 2rem;
+    margin: 0 6rem;
+    padding: 2rem 0;
+}
+
+.settingsDisplay > div:first-child {
+    border-top: transparent;
+    padding: 0;
+}
+
+.settingsDisplay > div > div {
+    word-break: break-word;
+    margin-right: 2rem;
+}
+
+.settingsDisplay > div > div > div {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.settingsDisplay > div > div > p {
+    color: var(--displayTextSecond);
+}
+
+.settingsDisplay > div > button, .settingsDisplay > div > input {
+    height: 4rem;
+    margin-left: auto;
+    padding: 0 1rem;
+}
+
+.settingInputButton {
+    margin-left: 1rem !important;
+}

@@ -1,0 +1,65 @@
+.sideBar {
+    position: absolute;
+    left: 0;
+    background-color: var(--darkGrey);
+    width: 15rem;
+    height: 100%;
+    transition: left 500ms ease;
+}
+
+.iconList {
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: calc(100% - 20rem);
+    margin-top: 10rem;
+}
+
+.iconList::-webkit-scrollbar {
+    display: none;
+}
+
+.iconList > button {
+    color: var(--white);
+    background-color: var(--greyDim);
+    background-size: 5rem;
+    border-radius: 5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 2.5rem 2.5rem 2.5rem;
+    transition: border-radius 250ms ease;
+}
+
+.iconList > button:last-child {
+    margin: 0 2.5rem;
+}
+
+.iconList > button:not(.noHover):hover {
+    opacity: 0.75;
+}
+
+.iconList > button:disabled {
+    opacity: 1;
+    border-radius: 3.5rem;
+}
+
+.publicButton {
+    background-image: url("../images/globe.png");
+}
+
+.addButton {
+    background-image: url("../images/plus.png");
+}
+
+.settingsButton {
+    background-image: url("../images/gear.png");
+    background-size: 5rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 2.5rem 5rem;
+}
+
+.settingsButton:hover {
+    opacity: 0.75;
+}

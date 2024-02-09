@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap");
+
+* {
+    font-family: "Work Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 16px;
+
+    --black: #101010;
+    --lightBlack: #202020;
+    --darkGrey: #404040;
+    --greyDim: #606060;
+    --grey: #808080;
+    --greyBright: #a0a0a0;
+    --lightGrey: #c0c0c0;
+    --darkWhite: #e0e0e0;
+    --white: #f0f0f0;
+
+    --display: var(--white);
+    --displayDivMain: var(--lightGrey);
+    --displayTextMain: var(--black);
+    --displayTextSecond: var(--darkGrey);
+
+    --element1Main: var(--darkGrey);
+    --element1Second: var(--greyDim);
+    --element1Text: var(--white);
+    --element2Main: var(--lightGrey);
+    --element2Second: var(--darkWhite);
+    --element2Text: var(--black);
+}
+
+:root.darkTheme {
+    --display: var(--lightBlack);
+    --displayDivMain: var(--black);
+    --displayTextMain: var(--white);
+    --displayTextSecond: var(--lightGrey);
+
+    --element1Main: var(--lightGrey);
+    --element1Second: var(--darkWhite);
+    --element1Text: var(--black);
+    --element2Main: var(--black);
+    --element2Second: var(--darkGrey);
+    --element2Text: var(--white);
+}
+
+/* General styles */
+
+body {
+    overflow: hidden;
+    user-select: none;
+    background: var(--black);
+    width: 100vw;
+    height: 100vh;
+}
+
+button {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+}
+
+button:not(.noHover):hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+}
+
+input[type=text] {
+    border: none;
+    outline: none;
+}
+
+input[type=text]:not(.noHover):hover {
+    cursor: text;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--grey);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--greyDim);
+}
+
+/* General classes */
+
+.hiddenText {
+    color: transparent !important;
+    font-size: 0 !important;
+}
+
+.buttonLarge {
+    color: var(--element1Text);
+    background-color: var(--element1Main);
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
+.buttonLarge:not(.noHover):hover {
+    background-color: var(--element1Second);
+}
+
+.buttonSmall {
+    color: var(--element2Text);
+    background-color: var(--element2Main);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.buttonSmall:not(.noHover):hover {
+    background-color: var(--element2Second);
+}
+
+.inputLarge {
+    color: var(--element2Text);
+    background-color: var(--element2Main);
+    border-radius: 1rem;
+    font-size: 2rem;
+    min-width: 5rem;
+}
+
+.inputSmall {
+    color: var(--element1Text);
+    background-color: var(--element1Main);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.divDisplay {
+    overflow-y: auto;
+    color: var(--displayTextMain);
+}
+
+.divDisplay > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 700;
+    min-height: 10rem;
+}
+
+.templates {
+    display: none;
+}

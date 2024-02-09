@@ -1,0 +1,35 @@
+/* TinCan logo */
+
+.logoButton {
+    position: absolute;
+    background-image: url("../images/logo.png");
+    background-size: 10rem;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 2.5rem;
+    transition: rotate 500ms ease;
+}
+
+.logoButton:hover {
+    opacity: 0.75;
+}
+
+/* Pointer pop-up (Block) */
+
+.pointerPopUp {
+    z-index: 0;
+    display: none; /* Block */
+    position: absolute;
+    word-break: break-word;
+    user-select: text;
+    transform: translateY(-50%);
+    opacity: 0;
+    color: var(--white);
+    background-color: var(--black);
+    border-radius: 2rem 0.5rem 0.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    max-width: 12rem;
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
+    transition: opacity 250ms ease;
+}

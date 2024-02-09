@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TinCan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/chat.css">
+    <link rel="stylesheet" href="styles/displayPage.css">
+    <link rel="stylesheet" href="styles/sideBar.css">
+    <link rel="stylesheet" href="styles/popUps.css">
+    <link rel="stylesheet" href="styles/misc.css">
+</head>
+<body>
+    <div id="displayPage" class="displayPage"><!--could add base image that just says nothing to see here with empty can-->
+        <div id="roomDisplay" class="roomDisplay">
+            <div id="messagesArea" class="messagesArea divDisplay">
+                <div>
+                    <button type="button" id="leaveButton" class="leaveButton hiddenText">Leave</button>
+                </div>
+                <!-- Rooms (<div>Messages</div>) -->
+            </div>
+            <div class="messageBar">
+                <input type="text" placeholder="Message" id="messageInput" class="inputLarge">
+                <button type="submit" id="messageButton" class="buttonLarge">Send</button>
+            </div>
+        </div>
+
+        <div id="publicDisplay" class="publicDisplay divDisplay">
+            <div>
+                <div>Public Rooms</div>
+            </div>
+            <!-- Public rooms -->
+            <button type="button" id="refreshButton" class="buttonLarge">Refresh</button>
+        </div>
+        
+        <div id="settingsDisplay" class="settingsDisplay divDisplay">
+            <div>
+                <div>Settings</div>
+            </div>
+            <div>
+                <div>
+                    <div>Display Name</div>
+                    <p>This name will be displayed in any room you join, unless someone else already has it.</p>
+                </div>
+                <input type="text" placeholder="User_1" id="displayNameInput" class="inputLarge">
+                <button type="submit" id="displayNameButton" class="buttonLarge settingInputButton">Change</button>
+            </div>
+            <div>
+                <div>
+                    <div>Theme</div>
+                    <p>You can choose between Light and Dark.</p>
+                </div>
+                <button type="button" id="themeButton" class="buttonLarge">Light</button>
+            </div>
+            <div>
+                <div>
+                    <div>Save to Browser</div>
+                    <p>All public rooms you have joined and settings you have set will be saved to your browser, for when you visit again.</p>
+                </div>
+                <button type="button" id="browserSaveButton" class="buttonLarge">Enabled</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sideBar" class="sideBar">
+        <div id="iconList" class="iconList">
+            <!-- Icons -->
+            <button type="button" id="addButton" class="addButton hiddenText">Add</button>
+            <button type="button" id="publicButton" class="publicButton hiddenText">Public</button>
+        </div>
+        <div>
+            <button type="button" id="settingsButton" class="settingsButton hiddenText">Settings</button>
+        </div>
+    </div>
+    
+    <button type="button" id="logoButton" class="logoButton hiddenText">TinCan</button>
+
+    <div id="pointerPopUp" class="pointerPopUp"></div>
+
+    <div id="popUps" class="popUps">
+        <div id="darkFilter" class="darkFilter"></div>
+
+        <div id="addPopUp" class="addPopUp">
+            <div class="createRoom">
+                <div>Create Room</div>
+                <p>Name your room to let everyone see it. No name makes a room private.</p>
+                <label for="createRoomInput">Room Name</label>
+                <input type="text" placeholder="None" id="createRoomInput" class="inputSmall">
+                <button type="submit" id="createRoomButton" class="buttonSmall">Create</button>
+            </div>
+            <div class="joinRoom">
+                <div>Join Room</div>
+                <label for="joinRoomInput">Room Name or Code</label>
+                <input type="text" id="joinRoomInput" class="inputSmall">
+                <button type="submit" id="joinRoomButton" class="buttonSmall">Join</button>
+            </div>
+            <div>
+                <button type="button" id="closeAddPopUpButton">Close</button>
+            </div>
+        </div>
+
+        <div id="infoPopUp" class="infoPopUp">
+            <div></div>
+            <p></p>
+            <div>
+                <button type="button" id="infoPopUpButton" class="buttonSmall"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="templates">
+        <!-- Message template -->
+        <div>
+            <div></div>
+            <p></p>
+        </div>
+        <!-- Public room template -->
+        <div>
+            <div>
+                <div></div>
+                <p></p>
+            </div>
+            <button type="button" class="buttonLarge">Join</button>
+        </div>
+        <!-- Room icon template -->
+        <button type="button"></button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts/globals.js"></script>
+    <script src="scripts/displayPage.js"></script>
+    <script src="scripts/sideBar.js"></script>
+    <script src="scripts/popUps.js"></script>
+    <script src="scripts/misc.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <script src="scripts/chat.js"></script>
+</body>
+</html>

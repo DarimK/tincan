@@ -1,0 +1,144 @@
+.popUps {
+    display: none; /* Flex */
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.popUps button {
+    color: var(--black);
+    background-color: var(--lightGrey);
+}
+
+.popUps button:not(.noHover):hover {
+    background-color: var(--darkWhite);
+}
+
+.popUps input {
+    color: var(--lightGrey);
+    background-color: var(--lightBlack);
+}
+
+.darkFilter {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+/* Add room pop-up (Flex) */
+
+.addPopUp {
+    z-index: 0;
+    align-self: center;
+    display: none; /* Flex */
+    flex-direction: column;
+    background-color: var(--darkGrey);
+    border-radius: 0.5rem;
+    width: 35rem;
+    height: 50rem;
+}
+
+.createRoom, .joinRoom {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.createRoom {
+    flex: 5;
+    border-bottom: 0.5rem solid var(--greyDim);
+}
+
+.joinRoom {
+    flex: 4;
+}
+
+.addPopUp > div:last-child {
+    background-color: var(--greyDim);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.addPopUp > div > * {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.addPopUp > div > p {
+    text-align: center;
+    color: var(--greyBright);
+}
+
+.addPopUp > div > div {
+    text-align: center;
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.addPopUp > div > label {
+    color: var(--lightGrey);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.addPopUp > div > input {
+    border-radius: 0.5rem;
+    height: 3rem;
+    padding: 0 1rem;
+}
+
+.addPopUp > div > button {
+    align-self: center;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.addPopUp > div:last-child > button {
+    color: var(--white);
+    background-color: transparent;
+    margin: 1rem;
+}
+
+.addPopUp > div:last-child > button:hover {
+    background-color: transparent;
+}
+
+/* Information pop-up (Flex) */
+
+.infoPopUp {
+    z-index: 0;
+    align-self: flex-start;
+    display: none; /* Flex */
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--darkGrey);
+    border-radius: 0.5rem;
+    width: 35rem;
+    height: 20rem;
+}
+
+.infoPopUp > p {
+    text-align: center;
+    color: var(--lightGrey);
+    font-size: 2rem;
+    margin: 0 2rem;
+}
+
+.infoPopUp > div {
+    text-align: center;
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.infoPopUp > div:last-child {
+    margin: 0 0 2rem 0;
+}
+
+.infoPopUp > div > button {
+    padding: 0.5rem 1rem;
+}
