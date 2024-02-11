@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
     socket.on("namechange", ({ username }) => {
         // Input validation and error responses
         if (username.length < MINNAMELENGTH || username.length > MAXNAMELENGTH || !validStringName(username)) {
-            socket.emit("error", `Invalid username (${MINNAMELENGTH}-${MAXNAMELENGTH} letters, numbers, or underscores).`);
+            socket.emit("error", `Invalid username. You can use ${MINNAMELENGTH}-${MAXNAMELENGTH} letters or numbers, with underscores in-between.`);
             return;
         }
 
@@ -71,7 +71,7 @@ io.on("connection", (socket) => {
             return;
         }
         if (type === "public" && (name.length < MINNAMELENGTH || name.length > MAXNAMELENGTH || !validStringName(name))) {
-            socket.emit("error", `Invalid room name (${MINNAMELENGTH}-${MAXNAMELENGTH} letters, numbers, or underscores).`);
+            socket.emit("error", `Invalid room name. You can use ${MINNAMELENGTH}-${MAXNAMELENGTH} letters or numbers, with underscores in-between.`);
             return;
         }
         if (getRoomType(name) === "public") {
@@ -171,14 +171,14 @@ io.on("connection", (socket) => {
         // Rate limits user messages
         const currentTime = Date.now();
         if (currentTime - lastMessageTime < RATELIMITTIME) {
-            socket.emit("error", `Message rate limit exceeded. Please space your messages ${RATELIMITTIME}ms apart from eachother.`);
+            socket.emit("error", `Please space your messages ${RATELIMITTIME}ms apart from eachother.`);
             return;
         }
         lastMessageTime = currentTime;
 
         // Input validation and error responses
         if (!message || message.length > MAXMSGLENGTH) {
-            socket.emit("error", `Invalid message (1-${MAXMSGLENGTH} chars)`);
+            socket.emit("error", `Please keep your messages under ${MAXMSGLENGTH} characters in length.`);
             return;
         }
         if (!roomId || roomId.length > ROOMCODELENGTH) {

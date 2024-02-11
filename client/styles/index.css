@@ -29,7 +29,7 @@ img {
 
 h1 {
     color: transparent;
-    background: linear-gradient(90deg, #101010, #c0c0c0);
+    background: linear-gradient(90deg, #404040, #c0c0c0);
     background-clip: text;
     font-size: 5rem;
     font-weight: 700;

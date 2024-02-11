@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("connected");
         loadSavedData();
         closeInfoPopUp();
+
+        setTimeout(() => {
+            closeLoadingPage();
+        }, 1000);
     
         if (root.classList.contains("darkTheme"))
             themeButton.textContent = "Dark";
@@ -87,8 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("disconnected");
         if (localStorage.saveData === "1")
             saveData();
+        
         reset();
         closeAllPopUps();
+        openLoadingPage();
         openInfoPopUp("Error", "Connection has been lost with the server. Please refresh the page or come back later.", "OK");
     });
 });
@@ -117,12 +123,6 @@ leaveButton.addEventListener("click", () => {
 refreshButton.addEventListener("click", () => {
     removePublicRoom();
     requestPublicRooms(MAXPUBLICROOMREQUEST);
-});
-
-settingsButton.addEventListener("click", () => {
-    closeSideBar();
-    closeAllDisplays();
-    openSettingsDisplay();
 });
 
 displayNameButton.addEventListener("click", () => {
@@ -166,6 +166,12 @@ publicButton.addEventListener("click", () => {
     openPublicDisplay();
     removePublicRoom();
     requestPublicRooms(5);
+});
+
+settingsButton.addEventListener("click", () => {
+    closeSideBar();
+    closeAllDisplays();
+    openSettingsDisplay();
 });
 
 

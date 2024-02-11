@@ -103,6 +103,18 @@ input[type=text]:not(.noHover):hover {
     font-size: 0 !important;
 }
 
+.logoText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: transparent;
+    background: linear-gradient(90deg, var(--darkGrey), var(--lightGrey));
+    background-clip: text;
+    font-size: 10rem;
+    font-weight: 700;
+}
+
 .buttonLarge {
     color: var(--element1Text);
     background-color: var(--element1Main);
@@ -153,8 +165,4 @@ input[type=text]:not(.noHover):hover {
     font-size: 5rem;
     font-weight: 700;
     min-height: 10rem;
-}
-
-.templates {
-    display: none;
 }

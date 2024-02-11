@@ -1,5 +1,8 @@
 // Document objects
 const root = document.querySelector(":root");
+
+const loadingPage = document.getElementById("loadingPage");
+
 const displayPage = document.getElementById("displayPage");
 
 const roomDisplay = document.getElementById("roomDisplay");
@@ -49,6 +52,7 @@ const publicNodes = {};
 const iconNodes = {};
 
 // Constants
+const LOADINGPAGEFADETIME = 1000;
 const ROOMCODELENGTH = 32;
 const MAXICONTEXTLENGTH = 2;
 const ICONBUTTONRAND = 64;

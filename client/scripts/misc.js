@@ -1,3 +1,17 @@
+function openLoadingPage() {
+    loadingPage.style.display = "";
+    setTimeout(() => {
+        loadingPage.style.opacity = "";
+    }, 10);
+}
+
+function closeLoadingPage() {
+    loadingPage.style.opacity = "0";
+    setTimeout(() => {
+        loadingPage.style.display = "none";
+    }, 10 + LOADINGPAGEFADETIME);
+}
+
 function openPointerPopUp(xPos, yPos, text) {
     let timeoutTime = 0;
 
