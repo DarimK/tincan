@@ -3,7 +3,7 @@ const http = require("http");
 const socketIO = require("socket.io");
 const path = require("path");
 const { getRoomType, getPublicRoom, createRoom, joinRoom, leaveRoom } = require("./rooms");
-const { validStringName } = require("./misc");
+const { validInput, validStringName } = require("./misc");
 
 // Initializes server and frontend directory
 const app = express();
@@ -33,8 +33,13 @@ io.on("connection", (socket) => {
     let lastMessageTime = 0;
 
     // Handles default username change requests
-    socket.on("namechange", ({ username }) => {
+    socket.on("namechange", (input) => {
         // Input validation and error responses
+        if (!validInput(input, ["username"])) {
+            socket.emit("error", "Bad request.");
+            return;
+        }
+        const { username } = input;
         if (username.length < MINNAMELENGTH || username.length > MAXNAMELENGTH || !validStringName(username)) {
             socket.emit("error", `Invalid username. You can use ${MINNAMELENGTH}-${MAXNAMELENGTH} letters or numbers, with underscores in-between.`);
             return;
@@ -60,8 +65,13 @@ io.on("connection", (socket) => {
     });
 
     // Handles room creation requests
-    socket.on("create", ({ name, type }) => {
+    socket.on("create", (input) => {
         // Input validation and error responses
+        if (!validInput(input, ["name", "type"])) {
+            socket.emit("error", "Bad request.");
+            return;
+        }
+        const { name, type } = input;
         if (userRooms.length >= MAXUSERROOMS) {
             socket.emit("error", `Maximum user rooms reached (${MAXUSERROOMS}).`);
             return;
@@ -93,8 +103,13 @@ io.on("connection", (socket) => {
     });
 
     // Handles room join requests
-    socket.on("join", ({ roomId }) => {
+    socket.on("join", (input) => {
         // Input validation and error responses
+        if (!validInput(input, ["roomId"])) {
+            socket.emit("error", "Bad request.");
+            return;
+        }
+        const { roomId } = input;
         if (userRooms.length >= MAXUSERROOMS) {
             socket.emit("error", `Maximum user rooms reached (${MAXUSERROOMS}).`);
             return;
@@ -139,8 +154,13 @@ io.on("connection", (socket) => {
     });
 
     // Handles room leave requests
-    socket.on("leave", ({ roomId }) => {
+    socket.on("leave", (input) => {
         // Input validation and error responses
+        if (!validInput(input, ["roomId"])) {
+            socket.emit("error", "Bad request.");
+            return;
+        }
+        const { roomId } = input;
         if (!roomId || roomId.length > ROOMCODELENGTH) {
             socket.emit("error", "Invalid room name or code.");
             return;
@@ -167,7 +187,7 @@ io.on("connection", (socket) => {
     });
 
     // Handles message requests
-    socket.on("message", ({ message, roomId }) => {
+    socket.on("message", (input) => {
         // Rate limits user messages
         const currentTime = Date.now();
         if (currentTime - lastMessageTime < RATELIMITTIME) {
@@ -177,6 +197,11 @@ io.on("connection", (socket) => {
         lastMessageTime = currentTime;
 
         // Input validation and error responses
+        if (!validInput(input, ["message", "roomId"])) {
+            socket.emit("error", "Bad request.");
+            return;
+        }
+        const { message, roomId } = input;
         if (!message || message.length > MAXMSGLENGTH) {
             socket.emit("error", `Please keep your messages under ${MAXMSGLENGTH} characters in length.`);
             return;
