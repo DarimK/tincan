@@ -6,12 +6,6 @@ window.addEventListener("resize", () => {
     closePointerPopUp();
 });
 
-window.addEventListener("beforeunload", () => {
-    if (storageType && socket.connected)
-        saveData();
-    reset();
-});
-
 document.addEventListener("DOMContentLoaded", () => {
     setWindowSize();
     setStorageType();
@@ -48,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.type === "name") {
             displayNameInput.placeholder = data.username;
             defaultUsername = data.username;
+            if (!ignoreErrors)
+                saveData();
         }
 
         if (data.type === "publicroom") {
@@ -93,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket.on("disconnect", () => {
         console.log("disconnected");
-        saveData();
         reset();
         closeAllPopUps();
         openLoadingPage();
@@ -118,6 +113,7 @@ leaveButton.addEventListener("click", () => {
     closeRoomDisplay();
     removeRoom(roomId);
     removeIcon(roomId);
+    saveData();
     setTimeout(openSideBar, 10);
     socket.emit("leave", { roomId });
 });
@@ -139,6 +135,7 @@ themeButton.addEventListener("click", () => {
         themeButton.textContent = "Dark";
     else
         themeButton.textContent = "Light";
+    saveData();
 });
 
 browserSaveButton.addEventListener("click", () => {
@@ -154,6 +151,7 @@ browserSaveButton.addEventListener("click", () => {
         clearStorageItems();
         browserSaveButton.textContent = "Enabled";
     }
+    saveData();
 });
 
 

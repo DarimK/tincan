@@ -39,6 +39,8 @@ function roomAdded(roomId) {
         }
     });
     closeAllPopUps();
+    if (!ignoreErrors)
+        saveData();
 }
 
 function reset() {
@@ -77,6 +79,7 @@ function clearStorageItems() {
 }
 
 function saveData() {
+    console.log("save");
     const roomIds = [];
     for (id in roomNodes)
         if (id.length !== ROOMCODELENGTH)
