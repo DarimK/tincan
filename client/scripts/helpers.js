@@ -79,7 +79,6 @@ function clearStorageItems() {
 }
 
 function saveData() {
-    console.log("save");
     const roomIds = [];
     for (id in roomNodes)
         if (id.length !== ROOMCODELENGTH)
@@ -108,7 +107,6 @@ function loadSavedData() {
             socket.emit("join", { roomId: id });
         }
     } catch (e) {
-        console.log("cleared invalid data");
         clearStorageItems();
     }
 }

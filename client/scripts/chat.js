@@ -1,4 +1,4 @@
-const socket = io("https://thing-7d4b.onrender.com");
+const socket = io("https://tincan.onrender.com");
 
 
 window.addEventListener("resize", () => {
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     socket.on("connect", () => {
-        console.log("connected");
         if (getStorageItem("saveData") === 0) {
             browserSaveButton.textContent = "Disabled";
             storage = {};
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     socket.on("disconnect", () => {
-        console.log("disconnected");
         reset();
         closeAllPopUps();
         openLoadingPage();
