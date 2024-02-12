@@ -62,5 +62,7 @@ const MAXPUBLICROOMREQUEST = 5;
 
 // Variables
 let ignoreErrors = false;
+let storage = {};
+let storageType = undefined;
 let defaultUsername = "User_1";
 let openedRoom = undefined;

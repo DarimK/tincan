@@ -7,17 +7,25 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("beforeunload", () => {
-    if (localStorage.saveData === "1" && socket.connected) {
+    if (storageType && socket.connected)
         saveData();
-        reset();
-    }
+    reset();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
     setWindowSize();
+    setStorageType();
+    if (!storageType) {
+        disableElement(browserSaveButton);
+        browserSaveButton.textContent = "Disabled";
+    }
 
     socket.on("connect", () => {
         console.log("connected");
+        if (getStorageItem("saveData") === 0) {
+            browserSaveButton.textContent = "Disabled";
+            storageType = undefined;
+        }
         loadSavedData();
         closeInfoPopUp();
 
@@ -29,11 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
             themeButton.textContent = "Dark";
         else
             themeButton.textContent = "Light";
-        
-        if (localStorage.saveData === "0")
-            browserSaveButton.textContent = "Disabled";
-        else
-            localStorage.saveData = "1";
     });
 
     socket.on("sent", (data) => {
@@ -89,9 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket.on("disconnect", () => {
         console.log("disconnected");
-        if (localStorage.saveData === "1")
-            saveData();
-        
+        saveData();
         reset();
         closeAllPopUps();
         openLoadingPage();
@@ -140,13 +141,15 @@ themeButton.addEventListener("click", () => {
 });
 
 browserSaveButton.addEventListener("click", () => {
-    if (localStorage.saveData === "1") {
-        localStorage.clear();
-        localStorage.saveData = "0";
+    if (storageType) {
+        clearStorageItems();
+        setStorageItem("saveData", 0);
         browserSaveButton.textContent = "Disabled";
+        storageType = undefined;
     }
     else {
-        localStorage.saveData = "1";
+        setStorageType();
+        clearStorageItems();
         browserSaveButton.textContent = "Enabled";
     }
 });

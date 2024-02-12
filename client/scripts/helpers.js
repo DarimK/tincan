@@ -51,32 +51,69 @@ function reset() {
     closeAllPopUps();
 }
 
+function setStorageType() {
+    try {
+        localStorage.setItem("test", "test");
+        localStorage.removeItem("test");
+        storageType = "local";
+    } catch (e) {
+        storageType = undefined;
+    }
+}
+
+function getStorageItem(key) {
+    if (storageType === "local")
+        return (localStorage.getItem(key)) ? JSON.parse(localStorage.getItem(key)) : undefined;
+    else
+        return (storage[key]) ? JSON.parse(storage[key]) : undefined;
+}
+
+function setStorageItem(key, item) {
+    if (storageType === "local")
+        localStorage.setItem(key, JSON.stringify(item));
+    else
+        storage[key] = JSON.stringify(item);
+}
+
+function clearStorageItems() {
+    if (storageType === "local")
+        localStorage.clear();
+    else
+        for (key in storage)
+            delete storage[key];
+}
+
 function saveData() {
     const roomIds = [];
     for (id in roomNodes)
         if (id.length !== ROOMCODELENGTH)
             roomIds.push(id);
 
-    localStorage.roomIds = JSON.stringify(roomIds);
-    localStorage.defaultUsername = defaultUsername;
-    localStorage.theme = (root.classList.contains("darkTheme")) ? "dark" : "light";
+    setStorageItem("roomIds", roomIds);
+    setStorageItem("defaultUsername", defaultUsername);
+    setStorageItem("theme", (root.classList.contains("darkTheme")) ? "dark" : "light");
 }
 
 function loadSavedData() {
-    if (localStorage.saveData !== "1")
-        return false;
-    
-    if (localStorage.theme === "dark")
-        root.classList.add("darkTheme");
+    try {
+        if (getStorageItem("saveData") === 0)
+            return;
+        
+        if (getStorageItem("theme") === "dark")
+            root.classList.add("darkTheme");
 
-    let username = localStorage.defaultUsername;
-    ignoreErrors = true;
-    socket.emit("namechange", { username });
+        ignoreErrors = true;
+        let username = getStorageItem("defaultUsername");
+        socket.emit("namechange", { username });
 
-    const roomIds = JSON.parse(localStorage.roomIds);
-    for (id of roomIds) {
-        socket.emit("create", { name: id, type: "public" });
-        socket.emit("join", { roomId: id });
+        const roomIds = getStorageItem("roomIds") || [];
+        for (id of roomIds) {
+            socket.emit("create", { name: id, type: "public" });
+            socket.emit("join", { roomId: id });
+        }
+    } catch (e) {
+        console.log("cleared invalid data");
+        clearStorageItems();
     }
 }
 
