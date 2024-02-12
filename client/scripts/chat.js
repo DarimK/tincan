@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://thing-7d4b.onrender.com");
 
 
 window.addEventListener("resize", () => {

@@ -8,7 +8,12 @@ const { validInput, validStringName } = require("./misc");
 // Initializes server and frontend directory
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server, {
+    cors: {
+        origin: "https://www.darim.me",
+        methods: ["GET", "POST"]
+    }
+});
 const clientPath = path.join(__dirname, "../client");
 const PORT = process.env.PORT || 3000;
 app.use(express.static(clientPath));
