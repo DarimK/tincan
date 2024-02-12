@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("connected");
         if (getStorageItem("saveData") === 0) {
             browserSaveButton.textContent = "Disabled";
+            storage = {};
             storageType = undefined;
         }
         loadSavedData();
@@ -145,6 +146,7 @@ browserSaveButton.addEventListener("click", () => {
         clearStorageItems();
         setStorageItem("saveData", 0);
         browserSaveButton.textContent = "Disabled";
+        storage = {};
         storageType = undefined;
     }
     else {

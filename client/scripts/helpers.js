@@ -55,32 +55,25 @@ function setStorageType() {
     try {
         localStorage.setItem("test", "test");
         localStorage.removeItem("test");
+        storage = localStorage;
         storageType = "local";
     } catch (e) {
+        storage = {};
         storageType = undefined;
     }
 }
 
 function getStorageItem(key) {
-    if (storageType === "local")
-        return (localStorage.getItem(key)) ? JSON.parse(localStorage.getItem(key)) : undefined;
-    else
-        return (storage[key]) ? JSON.parse(storage[key]) : undefined;
+    return (storage[key]) ? JSON.parse(storage[key]) : undefined;
 }
 
 function setStorageItem(key, item) {
-    if (storageType === "local")
-        localStorage.setItem(key, JSON.stringify(item));
-    else
-        storage[key] = JSON.stringify(item);
+    storage[key] = JSON.stringify(item);
 }
 
 function clearStorageItems() {
-    if (storageType === "local")
-        localStorage.clear();
-    else
-        for (key in storage)
-            delete storage[key];
+    for (key in storage)
+        delete storage[key];
 }
 
 function saveData() {
