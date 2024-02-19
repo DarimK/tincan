@@ -1,6 +1,6 @@
 # TinCan
 
-TinCan is a web app that lets you chat with other online users in a fun and spontaneous way. Unlike other messaging apps, TinCan does not track or store your conversations, so you can chat freely without worrying about message history, so you can enjoy the freedom of living in the moment. TinCan is designed to be fast, fun, and easy to use.
+TinCan is a web app that lets you chat with other online users in a fun and spontaneous way. Unlike other messaging apps, TinCan does not track or store your conversations, so you can chat freely without worrying about message history. TinCan is designed to be fast, fun, and easy to use.
 
 ## Features
 
