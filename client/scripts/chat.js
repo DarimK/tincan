@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
         browserSaveButton.textContent = "Disabled";
     }
 
+    const loadingTimeout = setTimeout(() => {
+        openLoadingPage("FINDING SERVER");
+    }, 5000);
+
     socket.on("connect", () => {
         if (getStorageItem("saveData") === 0) {
             browserSaveButton.textContent = "Disabled";
@@ -24,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeInfoPopUp();
 
         setTimeout(() => {
+            clearTimeout(loadingTimeout);
             closeLoadingPage();
         }, 1000);
     
@@ -107,7 +112,7 @@ messageInput.addEventListener("keyup", (event) => {
 messageButton.addEventListener("click", sendMessage);
 
 leaveButton.addEventListener("click", () => {
-    let roomId = openedRoom;
+    const roomId = openedRoom;
     closeRoomDisplay();
     removeRoom(roomId);
     removeIcon(roomId);
@@ -122,7 +127,7 @@ refreshButton.addEventListener("click", () => {
 });
 
 displayNameButton.addEventListener("click", () => {
-    let username = displayNameInput.value;
+    const username = displayNameInput.value;
     displayNameInput.value = "";
     socket.emit("namechange", { username });
 });
@@ -189,7 +194,7 @@ darkFilter.addEventListener("click", () => {
 });
 
 createRoomButton.addEventListener("click", () => {
-    let name = createRoomInput.value;
+    const name = createRoomInput.value;
     let type = "public";
     if (name === "")
         type = "private";
@@ -197,7 +202,7 @@ createRoomButton.addEventListener("click", () => {
 });
 
 joinRoomButton.addEventListener("click", () => {
-    let roomId = joinRoomInput.value;
+    const roomId = joinRoomInput.value;
     socket.emit("join", { roomId });
 });
 

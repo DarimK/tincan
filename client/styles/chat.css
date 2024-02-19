@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap");
 
 * {
     font-family: "Work Sans", sans-serif;
@@ -112,6 +112,7 @@ input[type=text]:not(.noHover):hover {
     transform: translate(-50%, -50%);
     color: transparent;
     background: linear-gradient(90deg, var(--darkGrey), var(--lightGrey));
+    -webkit-background-clip: text;
     background-clip: text;
     font-size: 10rem;
     font-weight: 700;

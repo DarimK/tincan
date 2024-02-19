@@ -1,5 +1,7 @@
-function openLoadingPage() {
+function openLoadingPage(loadingText) {
     loadingPage.style.display = "";
+    if (loadingText)
+        loadingPageText.textContent = loadingText;
     setTimeout(() => {
         loadingPage.style.opacity = "";
     }, 10);
@@ -9,6 +11,7 @@ function closeLoadingPage() {
     loadingPage.style.opacity = "0";
     setTimeout(() => {
         loadingPage.style.display = "none";
+        loadingPageText.textContent = "LOADING";
     }, 10 + LOADINGPAGEFADETIME);
 }
 

@@ -98,7 +98,7 @@ function loadSavedData() {
             root.classList.add("darkTheme");
 
         ignoreErrors = true;
-        let username = getStorageItem("defaultUsername");
+        const username = getStorageItem("defaultUsername");
         socket.emit("namechange", { username });
 
         const roomIds = getStorageItem("roomIds") || [];
@@ -113,7 +113,7 @@ function loadSavedData() {
 
 function sendMessage() {
     if (messageInput.value) {
-        let message = messageInput.value;
+        const message = messageInput.value;
         messageInput.value = "";
         socket.emit("message", { message, roomId: openedRoom });
     }

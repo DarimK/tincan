@@ -2,6 +2,7 @@
 const root = document.querySelector(":root");
 
 const loadingPage = document.getElementById("loadingPage");
+const loadingPageText = document.getElementById("loadingPageText");
 
 const displayPage = document.getElementById("displayPage");
 

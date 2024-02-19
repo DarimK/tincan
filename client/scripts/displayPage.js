@@ -16,7 +16,7 @@ function closeRoomDisplay() {
 }
 
 function setMessage(roomId, username, message) {
-    let messageNodes = roomMessageNodes[roomId];
+    const messageNodes = roomMessageNodes[roomId];
 
     if (messageNodes[username]) {
         if (messageNodes[username].children[1].textContent === message) {
