@@ -1,4 +1,4 @@
-const socket = io("https://tincan.onrender.com");
+const socket = io((window.location.hostname === "localhost") ? "/" : "https://tincan.onrender.com");
 
 
 window.addEventListener("resize", () => {
