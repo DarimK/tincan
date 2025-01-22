@@ -22,7 +22,7 @@ TinCan is built with the following technologies:
 
 ## Demo
 
-You can try out TinCan at <https://www.darim.me/TinCan>.
+You can try out TinCan at <https://dev.darim.dev/tincan>.
 
 ## Installation
 
@@ -31,13 +31,13 @@ To run TinCan locally, you need to have Node.js installed on your machine. Then,
 - Clone this repository:
 
 ```
-git clone https://github.com/DarimK/TinCan.git
+git clone https://github.com/darimk/tincan.git
 ```
 
 - Navigate to the project folder:
 
 ```
-cd TinCan
+cd tincan
 ```
 
 - Install the dependencies:
