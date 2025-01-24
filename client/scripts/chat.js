@@ -19,11 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
 
     socket.on("connect", () => {
-        if (getStorageItem("saveData") === 0) {
-            browserSaveButton.textContent = "Disabled";
-            storage = {};
-            storageType = undefined;
-        }
         loadSavedData();
         closeInfoPopUp();
 
@@ -144,9 +139,7 @@ themeButton.addEventListener("click", () => {
 browserSaveButton.addEventListener("click", () => {
     if (storageType) {
         clearStorageItems();
-        setStorageItem("saveData", 0);
         browserSaveButton.textContent = "Disabled";
-        storage = {};
         storageType = undefined;
     }
     else {

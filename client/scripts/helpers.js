@@ -57,25 +57,30 @@ function setStorageType() {
     try {
         localStorage.setItem("test", "test");
         localStorage.removeItem("test");
-        storage = localStorage;
+        storage = localStorage[STORAGE_ID] || "{}";
         storageType = "local";
     } catch (e) {
-        storage = {};
+        storage = "{}";
         storageType = undefined;
     }
 }
 
 function getStorageItem(key) {
-    return (storage[key]) ? JSON.parse(storage[key]) : undefined;
+    return JSON.parse(storage)[key];
 }
 
 function setStorageItem(key, item) {
-    storage[key] = JSON.stringify(item);
+    const storageObj = JSON.parse(storage);
+    storageObj[key] = item;
+    storage = JSON.stringify(storageObj);
+    if (storageType === "local")
+        localStorage[STORAGE_ID] = storage;
 }
 
 function clearStorageItems() {
-    for (key in storage)
-        delete storage[key];
+    storage = "{}";
+    if (storageType === "local")
+        delete localStorage[STORAGE_ID];
 }
 
 function saveData() {
@@ -91,9 +96,6 @@ function saveData() {
 
 function loadSavedData() {
     try {
-        if (getStorageItem("saveData") === 0)
-            return;
-        
         if (getStorageItem("theme") === "dark")
             root.classList.add("darkTheme");
 

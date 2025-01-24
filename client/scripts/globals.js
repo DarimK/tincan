@@ -60,10 +60,11 @@ const ICONBUTTONRAND = 64;
 const DOUBLECLICKDELAYTIME = 1000;
 const POINTERPOPUPFADETIME = 250;
 const MAXPUBLICROOMREQUEST = 5;
+const STORAGE_ID = "tincan";
 
 // Variables
 let ignoreErrors = false;
-let storage = {};
+let storage = "{}";
 let storageType = undefined;
 let defaultUsername = "User_1";
 let openedRoom = undefined;
